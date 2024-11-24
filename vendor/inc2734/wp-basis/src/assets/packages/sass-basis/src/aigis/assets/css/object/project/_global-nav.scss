@@ -1,0 +1,9 @@
+@use "../../../../../css/core";
+
+.p-global-nav {
+  @include core.set-font-size-level(-1);
+
+  .c-navbar__item a {
+    padding: var(--_padding-2) var(--_padding-1);
+  }
+}

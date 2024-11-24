@@ -1,0 +1,1 @@
+(()=>{"use strict";(0,window.wp.hooks.addFilter)("blocks.registerBlockType","snow-monkey/set-dimensions-default-controls",(function(s){return s?.supports?.spacing?.padding?s={...s,supports:{...s.supports,spacing:{...s.supports.spacing,__experimentalDefaultControls:{...s.supports.spacing.__experimentalDefaultControls,margin:!0,padding:!0}}}}:s}))})();

@@ -1,0 +1,80 @@
+@mixin container-padding() {
+  --_container-margin: var(--_global--container-margin);
+  --_container-margin-right: calc(var(--_container-margin) + env(safe-area-inset-right));
+  --_container-margin-left: calc(var(--_container-margin) + env(safe-area-inset-left));
+
+  padding-right: var(--_container-margin-right);
+  padding-left: var(--_container-margin-left);
+}
+
+/*
+---
+name: fluid-container()
+category:
+  - core/abstract
+  - core/abstract/container
+---
+Abstract fluid container component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-fluid-container {
+  @include core.fluid-container();
+}
+```
+
+### html
+```ejs
+<div class="c-fluid-container">
+  ...
+</div>
+```
+*/
+
+@mixin fluid-container() {
+  flex-grow: 1; // To prevent the item from being crushed when it becomes a flex item.
+  box-sizing: content-box;
+  @include container-padding();
+  width: auto;
+  max-width: 100%;
+	min-width: 0;
+}
+
+/*
+---
+name: container()
+category:
+  - core/abstract
+  - core/abstract/container
+---
+Abstract container component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-container {
+  @include core.container();
+}
+```
+
+### html
+```ejs
+<div class="c-container">
+  ...
+</div>
+```
+*/
+
+@mixin container() {
+  --_container-max-width: var(--_global--container-max-width);
+
+  @include fluid-container();
+
+  box-sizing: content-box;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: var(--_container-max-width);
+}

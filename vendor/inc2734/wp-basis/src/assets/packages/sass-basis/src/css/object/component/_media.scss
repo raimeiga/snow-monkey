@@ -1,0 +1,37 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-media
+category:
+  - object/component
+  - object/component/media
+---
+Media component
+
+### html
+```html
+<div class="c-media">
+  <div class="c-media__figure">
+    <img src="/basis/aigis_assets/images/dummy.jpg" style="width: 150px">
+  </div>
+  <div class="c-media__body">
+    ...
+  </div>
+</div>
+```
+*/
+
+.c-media {
+  @include abstract.media();
+
+  &--middle {
+    align-items: center;
+  }
+
+  &--reverse {
+    .c-media__figure {
+      order: 1;
+    }
+  }
+}

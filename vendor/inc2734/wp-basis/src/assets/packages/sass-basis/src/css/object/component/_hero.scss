@@ -1,0 +1,49 @@
+@use "../../core/mixin";
+@use "../../core/abstract";
+
+/*
+---
+name: .c-hero
+category:
+  - object/component
+  - object/component/hero
+---
+Hero component
+
+### html
+```html
+<div class="c-hero" style="background-image: url(/basis/aigis_assets/images/dummy.jpg)">
+  <div class="c-hero__header">
+    ...
+  </div>
+  <div class="c-hero__content">
+    ...
+  </div>
+  <div class="c-hero__footer">
+    ...
+  </div>
+</div>
+```
+*/
+
+.c-hero {
+  @include abstract.hero();
+
+  &--full {
+    height: 100vh;
+  }
+
+  &--cover {
+    @include mixin.background-image-cover();
+  }
+
+  &--overlay {
+    @include mixin.overlay(#000, .7);
+  }
+
+  &--fixed {
+    @include mixin.media-min(lg) {
+      @include mixin.background-image-fixed();
+    }
+  }
+}

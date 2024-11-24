@@ -1,0 +1,10 @@
+@use "../../../../../css/core";
+
+.c-meta {
+  @include core.set-font-size-level(-1);
+  color: var(--_color-gray);
+
+  a {
+    color: inherit;
+  }
+}

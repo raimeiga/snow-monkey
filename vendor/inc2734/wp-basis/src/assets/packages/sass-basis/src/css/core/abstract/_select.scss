@@ -1,0 +1,92 @@
+@use "../mixin";
+
+/*
+---
+name: select()
+category:
+  - core/abstract
+  - core/abstract/form
+---
+Abstract selectbox component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-select {
+  @include core.select();
+}
+```
+
+### html
+```ejs
+<div class="c-select">
+  <select class="c-select__control">
+    <option value="1">label-1</option>
+    <option value="2">label-2</option>
+    <option value="3">label-3</option>
+  </select>
+  <span class="c-select__toggle"></span>
+</div>
+```
+*/
+
+@mixin select() {
+  position: relative;
+  display: inline-block;
+
+  &__toggle {
+    display: none;
+  }
+
+  &__control {
+    position: relative;
+    z-index: 1;
+    appearance: none;
+    display:inline-block;
+    cursor: pointer;
+    background-color: transparent;
+    max-width: 100%;
+    @include mixin.form-control-base-padding();
+    padding-right: var(--_s1);
+    @include mixin.form-control-base-border();
+
+    &:focus {
+      & + .smf-select-control__toggle {
+        &::before {
+          border-color: #3a87fd;
+        }
+      }
+    }
+
+    &:disabled {
+      & + .smf-select-control__toggle {
+        background-color: var(--_lightest-color-gray);
+      }
+    }
+  }
+
+  &__toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    display: block;
+    background-color: var(--_color-white);
+
+    &::before {
+      position: absolute;
+      top: calc(50% - 4px);
+      right: calc(var(--_s-1) - 6px);
+      content: '';
+      display: block;
+      @include mixin.square(6px);
+      border-style: solid;
+      border-color: currentColor;
+      border-width: 0 1px 1px 0;
+      transform: rotate(45deg);
+    }
+  }
+}

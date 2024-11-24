@@ -1,0 +1,20 @@
+@use "../../../../../css/core";
+@use "../../core/mixin/font-basis" as *;
+
+.l-header .c-site-branding {
+  &__title {
+    @include font-basis();
+    @include core.set-font-size-level(4);
+    margin: 0;
+
+    a {
+      text-decoration: none;
+    }
+
+    img {
+      margin-right: 8px;
+      vertical-align: baseline;
+      height: 24px;
+    }
+  }
+}

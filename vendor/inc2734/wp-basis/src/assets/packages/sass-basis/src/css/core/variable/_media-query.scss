@@ -1,0 +1,60 @@
+/*
+---
+name: $min-columns
+category:
+  - core/variable
+  - core/variable/media-query
+---
+The minimum number of columns
+
+### scss
+```scss
+$min-columns: 1;
+```
+*/
+
+$min-columns: 1 !default;
+
+/*
+---
+name: $max-columns
+category:
+  - core/variable
+  - core/variable/media-query
+---
+The maximum number of columns
+
+### scss
+```scss
+$max-columns: 12;
+```
+*/
+
+$max-columns: 12 !default;
+
+/*
+---
+name: $sizes
+category:
+  - core/variable
+  - core/variable/media-query
+---
+Hash of breakpoints
+
+### scss
+```scss
+$sizes: (
+  'sm': 0,
+  'md': 640px,
+  'lg': 1024px,
+  'xl': 1280px
+);
+```
+*/
+
+$sizes: (
+  'sm': 0,
+  'md': 640px,
+  'lg': 1024px,
+  'xl': 1280px
+) !default;

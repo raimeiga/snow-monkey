@@ -1,0 +1,296 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-navbar
+category:
+  - object/component
+  - object/component/navbar
+---
+Navbar component
+
+### html
+```html
+<ul class="c-navbar">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+```html
+<ul class="c-navbar c-navbar--center">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+```html
+<ul class="c-navbar c-navbar--left">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+```html
+<ul class="c-navbar c-navbar--right">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+```html
+<ul class="c-navbar" data-popup-mode="click">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <button class="c-navbar__toggle" aria-expanded="false">
+      <span class="c-ic-angle-right" aria-hidden="true"></span>
+    </button>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <button class="c-navbar__toggle" aria-expanded="false">
+          <span class="c-ic-angle-right" aria-hidden="true"></span>
+        </button>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <button class="c-navbar__toggle" aria-expanded="false">
+          <span class="c-ic-angle-right" aria-hidden="true"></span>
+        </button>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <button class="c-navbar__toggle" aria-expanded="false">
+      <span class="c-ic-angle-right" aria-hidden="true"></span>
+    </button>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <button class="c-navbar__toggle" aria-expanded="false">
+          <span class="c-ic-angle-right" aria-hidden="true"></span>
+        </button>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+*/
+
+.c-navbar {
+  @include abstract.navbar();
+
+  &--center {
+    justify-content: center;
+
+    .c-navbar__item {
+      flex: 0 1 auto;
+    }
+  }
+
+  &--left {
+    .c-navbar__item {
+      flex: 0 1 auto;
+    }
+  }
+
+  &--right {
+    justify-content: flex-end;
+
+    .c-navbar__item {
+      flex: 0 1 auto;
+
+      > .c-navbar__submenu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        left: auto;
+      }
+    }
+
+    .c-navbar__subitem {
+      > .c-navbar__submenu {
+        position: absolute;
+        top: 0;
+        right: 100%;
+        left: auto;
+      }
+    }
+  }
+
+  &[data-popup-mode="click"] {
+    .c-navbar__item,
+    .c-navbar__subitem {
+      position: relative;
+
+      &[aria-haspopup="true"] {
+        display: flex;
+        justify-content: space-between;
+
+        > * {
+          flex: 1 1 auto;
+        }
+
+        > a {
+          padding-right: var(--_padding-1);
+          max-width: calc(100% - 42px);
+        }
+
+        > .c-navbar__toggle {
+          flex: 0 0 auto;
+          width: 42px;
+          overflow: hidden;
+        }
+
+        > .c-navbar__submenu {
+          flex: 1 1 100%;
+        }
+      }
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .c-ic-angle-right {
+      transform: translateY(0);
+    }
+  }
+}

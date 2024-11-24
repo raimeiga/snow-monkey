@@ -1,0 +1,49 @@
+@use "sass:math";
+@use "../../core/abstract";
+
+.c-responsive-container-16-9,
+.c-responsive-container-4-3 {
+  @include abstract.responsive-container();
+}
+
+/*
+---
+name: .c-responsive-container-16-9
+category:
+  - object/component
+  - object/component/responsive-container
+---
+Responsive container component
+
+### html
+```html
+<div class="c-responsive-container-16-9">
+  <iframe></iframe>
+</div>
+```
+*/
+
+.c-responsive-container-16-9 {
+  padding-bottom: (math.div(9, 16) * 100%);
+}
+
+/*
+---
+name: .c-responsive-container-4-3
+category:
+  - object/component
+  - object/component/responsive-container
+---
+Responsive container component
+
+### html
+```html
+<div class="c-responsive-container-4-3">
+  <iframe></iframe>
+</div>
+```
+*/
+
+.c-responsive-container-4-3 {
+  padding-bottom: (math.div(3, 4) * 100%);
+}

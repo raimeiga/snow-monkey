@@ -1,0 +1,28 @@
+@use "./replace" as *;
+
+/*
+---
+name: sanitize-animation-name()
+category:
+  - core/function
+---
+Sanitize animation name
+
+### scss
+```scss
+//
+// @param   string  $name
+// @return  string
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+$animation-name: function.sanitize-animation-name($name);
+animation: $animation-name .2s ease-in 0s;
+```
+*/
+
+@function sanitize-animation-name($name) {
+  $name: replace(('.', '(', ')', ',', ' ', '#', '-', '[', ']'), '_', $name);
+  @return $name;
+}

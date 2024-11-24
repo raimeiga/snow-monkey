@@ -1,0 +1,72 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-fluid-container
+category:
+  - object/component
+  - object/component/container/fluid-container
+---
+Fluid container component
+
+### html
+```html
+<div class="c-fluid-container">
+  ...
+</div>
+```
+```html
+<div class="c-fluid-container">
+  <div class="c-fluid-container">
+    ...
+  </div>
+</div>
+```
+```html
+<div class="c-fluid-container">
+  <div class="c-container">
+    ...
+  </div>
+</div>
+```
+*/
+
+.c-fluid-container {
+  @include abstract.fluid-container();
+}
+
+/*
+---
+name: .c-container
+category:
+  - object/component
+  - object/component/container
+  - object/component/container/container
+---
+Container component
+
+### html
+```html
+<div class="c-container">
+  ...
+</div>
+```
+```html
+<div class="c-container">
+  <div class="c-container">
+    ...
+  </div>
+</div>
+```
+```html
+<div class="c-container">
+  <div class="c-fluid-container">
+    ...
+  </div>
+</div>
+```
+*/
+
+.c-container {
+  @include abstract.container();
+}

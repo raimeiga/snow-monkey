@@ -1,0 +1,23 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "wp-awesome-widgets/site-branding",
+  "title": "[WPAW] Site branding",
+  "description": "",
+  "category": "widgets",
+  "textdomain": "inc2734-wp-awesome-widgets",
+  "attributes": {
+    "description": {
+      "type": "string"
+    },
+    "clientId": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "anchor": true,
+    "className": false,
+    "customClassName": false
+  },
+  "editorScript": "file:./index.js"
+}

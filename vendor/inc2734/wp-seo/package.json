@@ -1,0 +1,39 @@
+{
+	"engines": {
+		"node": ">=20.10.0",
+		"npm": ">=10.2.3"
+	},
+	"volta": {
+		"node": "20.11.1"
+	},
+	"author": "inc2734",
+	"license": "GPL-2.0+",
+	"devDependencies": {
+		"@wordpress/scripts": "^30",
+		"@wordpress/env": "^10.11.0",
+		"npm-run-all": "^4.1.5",
+		"rimraf": "^6.0.1"
+	},
+	"scripts": {
+		"wp-env": "wp-env",
+		"start": "wp-env start",
+		"stop": "wp-env stop",
+		"cli": "wp-env run cli --env-cwd=\"wp-content/plugins/wp-seo\"",
+		"wp": "wp-env run cli --env-cwd=\"wp-content/plugins/wp-seo\" wp",
+		"composer": "wp-env run --env-cwd=\"wp-content/plugins/wp-seo\" cli composer",
+		"pretest": "wp-env start && npm run composer install -- --no-interaction",
+		"test:lint:js": "wp-scripts lint-js src/src/js",
+		"test:lint:php": "wp-env start && npm run composer lint",
+		"test:lint": "run-s test:lint:*",
+		"test:unit:php": "wp-env start && wp-env run --env-cwd=\"wp-content/plugins/wp-seo\" tests-wordpress -- vendor/bin/phpunit -c .phpunit.xml.dist --verbose",
+		"test:unit": "run-s test:unit:*",
+		"test": "run-s test:*",
+		"format:js": "wp-scripts format src/src/js",
+		"format:php": "npm run wp-env start && npm run composer format",
+		"format": "run-p format:*",
+		"js:editor": "wp-scripts build src/src/js/editor.js --output-path src/dist/js",
+		"js": "npm run clean:js && run-p js:*",
+		"build": "run-p format js",
+		"clean:js": "rimraf src/dist/js"
+	}
+}

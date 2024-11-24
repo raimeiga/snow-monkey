@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-07-11T00:44:49+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.9.0\n"
+"X-Domain: inc2734-wp-github-theme-updater\n"
+
+#: App/Model/GitHubReleases.php:119
+msgid "Failed to get update response."
+msgstr ""
+
+#. Translators: 1: Theme name, 2: Error message
+#: App/Model/GitHubReleases.php:123
+msgid "[%1$s] %2$s"
+msgstr ""
+
+#: App/Model/Upgrader.php:63
+msgid "Downloading update&#8230;"
+msgstr ""

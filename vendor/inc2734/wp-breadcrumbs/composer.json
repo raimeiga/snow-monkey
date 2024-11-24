@@ -1,0 +1,34 @@
+{
+  "name": "inc2734/wp-breadcrumbs",
+  "description": "A library for WordPress breadcrumbs.",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "wp-coding-standards/wpcs": "^2.3",
+    "yoast/phpunit-polyfills": "^1.0"
+  },
+  "authors": [
+    {
+      "name": "Takashi Kitajima",
+      "email": "inc@2inc.org"
+    }
+  ],
+  "autoload": {
+    "psr-4" : {
+      "Inc2734\\WP_Breadcrumbs\\" : "src"
+    }
+  },
+  "config": {
+    "process-timeout": 0,
+    "vendor-dir": "vendor",
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  },
+  "scripts": {
+    "lint": "phpcs --standard=.phpcs.xml.dist",
+    "format": "phpcbf --standard=.phpcs.xml.dist --report-summary --report-source"
+  }
+}

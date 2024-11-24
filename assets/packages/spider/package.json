@@ -1,0 +1,63 @@
+{
+  "name": "@inc2734/spider",
+  "version": "0.0.50",
+  "author": "inc2734",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inc2734/smooth-scroll"
+  },
+  "main": "src/js/spider.js",
+  "files": [
+    "src",
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+	"engines": {
+		"node": ">=20.10.0",
+		"npm": ">=10.2.3"
+	},
+	"volta": {
+		"node": "20.11.1"
+	},
+  "devDependencies": {
+    "@babel/core": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "@inc2734/add-custom-event": "^0.5.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@wordpress/browserslist-config": "^5.37.0",
+    "autoprefixer": "^10.4.19",
+    "browser-sync": "^3.0.2",
+    "browserslist": "^4.23.0",
+    "cssnano": "^6.1.2",
+    "node-sass": "^9.0.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.4.38",
+    "postcss-cli": "^11.0.0",
+    "rimraf": "^5.0.5",
+    "rollup": "^4.13.1"
+  },
+  "scripts": {
+    "start": "npm run build",
+    "clean:js": "rimraf dist/js && mkdir -p dist/js",
+    "clean:css": "rimraf dist/css && mkdir -p dist/css",
+    "clean:zip": "rimraf spider.zip",
+    "js": "npm run clean:js && rollup -c --bundleConfigAsCjs",
+    "css": "npm run clean:css && node-sass src/css/spider.scss dist/css/spider.css && postcss -r dist/css/spider.css -c=postcss.config.js",
+    "docs:clean:js": "rimraf docs/dist/js && mkdir -p docs/dist/js",
+    "docs:clean:css": "rimraf docs/dist/css && mkdir -p docs/dist/css",
+    "docs:js": "npm run docs:clean:js && rollup -c docs/rollup.config.js --bundleConfigAsCjs",
+    "docs:css:general": "node-sass docs/src/css/general.scss docs/dist/css/general.css && postcss -r docs/dist/css/general.css -c=postcss.config.js",
+    "docs:css:app": "node-sass docs/src/css/app.scss docs/dist/css/app.css && postcss -r docs/dist/css/app.css -c=postcss.config.js",
+    "docs:css": "npm-run-all -p docs:css:*",
+    "docs": "npm-run-all -p docs:js docs:css",
+    "build": "npm-run-all -p css js docs",
+    "server": "browser-sync start --server 'docs' --index 'index.html' --files 'docs'",
+    "zip:pack": "rsync -a --exclude='/node_modules' --exclude='.*' --exclude='*.config.js' --exclude='package*.json' . spider && cd spider",
+    "zip:archive": "zip -9 -qmr spider.zip spider",
+    "zip": "npm run clean:zip && npm run zip:pack && npm run zip:archive"
+  }
+}

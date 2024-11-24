@@ -1,0 +1,163 @@
+@use "../../core/mixin";
+
+/*
+---
+name: .u-shake-vertical
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/shake-vertical
+---
+Shake vertical utility
+
+### html
+```html
+<div class="u-shake-vertical" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+
+.u-shake-vertical {
+  @include mixin.hover() {
+    @include mixin.shake-vertical();
+  }
+}
+
+/*
+---
+name: .u-vibrate-vertical
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/vibrate-vertical
+---
+Vibrate vertical utility
+
+### html
+```html
+<div class="u-vibrate-vertical" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+
+.u-vibrate-vertical {
+  @include mixin.hover() {
+    @include mixin.vibrate-vertical();
+  }
+}
+
+/*
+---
+name: .u-shake-horizontal
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/shake-horizontal
+---
+Shake horizontal utility
+
+### html
+```html
+<div class="u-shake-horizontal" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+
+.u-shake-horizontal {
+  @include mixin.hover() {
+    @include mixin.shake-horizontal();
+  }
+}
+
+/*
+---
+name: .u-vibrate-horizontal
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/vibrate-horizontal
+---
+Vibrate horizontal utility
+
+### html
+```html
+<div class="u-vibrate-horizontal" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+
+.u-vibrate-horizontal {
+  @include mixin.hover() {
+    @include mixin.vibrate-horizontal();
+  }
+}
+
+/*
+---
+name: .u-shake-scale
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/shake-scale
+---
+Shake scale utility
+
+### html
+```html
+<div class="u-shake-scale" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+
+.u-shake-scale {
+  @include mixin.hover() {
+    @include mixin.shake-scale();
+  }
+}
+
+/*
+---
+name: .u-vibrate-scale
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/vibrate-scale
+---
+Vibrate scale utility
+
+### html
+```html
+<div class="u-vibrate-scale" style="background-color: #333; width: 40px; height: 40px;"></div>
+```
+*/
+
+.u-vibrate-scale {
+  @include mixin.hover() {
+    @include mixin.vibrate-scale();
+  }
+}
+
+/*
+---
+name: .u-extend-underline
+category:
+  - object/utility
+  - object/utility/animation
+  - object/utility/animation/extend-underline
+---
+Extend underline utility
+
+### html
+```html
+<span class="u-extend-underline">menu</span>
+```
+*/
+
+.u-extend-underline {
+  position: relative;
+
+  &::after {
+    @include mixin.extend-underline();
+  }
+
+  @include mixin.hover() {
+    &::after {
+      width: 100%;
+    }
+  }
+}

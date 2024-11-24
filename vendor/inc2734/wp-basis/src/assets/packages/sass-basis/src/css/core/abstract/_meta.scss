@@ -1,0 +1,36 @@
+@use "../mixin";
+
+/*
+---
+name: meta()
+category:
+  - core/abstract
+---
+Abstract meta component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-meta {
+  @include core.meta();
+}
+```
+
+### html
+```ejs
+<ul class="c-meta">
+  <li class="c-meta__item">
+    ...
+  </li>
+</ul>
+```
+*/
+
+@mixin meta() {
+  @include mixin.list-unstyled();
+
+  &__item {
+    display: inline;
+  }
+}

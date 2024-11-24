@@ -1,0 +1,26 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-input-group
+category:
+  - object/component
+  - object/component/input-group
+---
+Input group component
+
+### html
+```html
+<div class="c-input-group">
+  <div class="c-input-group__addon">@</div>
+  <div class="c-input-group__field">
+    <input type="text">
+  </div>
+  <button class="c-input-group__btn">Go</button>
+</div>
+```
+*/
+
+.c-input-group {
+  @include abstract.input-group();
+}

@@ -1,0 +1,125 @@
+@use "sass:map";
+@use "sass:list";
+@use "../function";
+@use "../variable";
+
+/*
+---
+name: media-min()
+category:
+  - core/mixin
+  - core/mixin/media-query
+---
+min-width media query
+
+### scss
+```scss
+//
+// @param  size|length  $size  width
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-foo {
+  @include core.media-min(md) {
+    ...
+  }
+}
+```
+*/
+
+@mixin media-min($size) {
+  $sizes-keys: map.keys(variable.$sizes);
+  $min-key: list.nth($sizes-keys, 1);
+
+  @if (0 == $size or $min-key == $size or false == $size) {
+    @content;
+  } @else {
+    @media (min-width: function.min($size)) {
+      @content;
+    }
+  }
+}
+
+/*
+---
+name: media-max()
+category:
+  - core/mixin
+  - core/mixin/media-query
+---
+max-width media query
+
+### scss
+```scss
+//
+// @param  size|length  $size  width
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-foo {
+  @include core.media-max(md) {
+    ...
+  }
+}
+```
+*/
+
+@mixin media-max($size) {
+  $sizes-keys: map.keys(variable.$sizes);
+  $max-key: list.nth($sizes-keys, -1);
+
+  @if (0 == $size or $max-key == $size or false == $size) {
+    @content;
+  } @else {
+    @media not all and (min-width: function.min(function.next-size-key($size))) {
+      @content;
+    }
+  }
+}
+
+/*
+---
+name: media-only()
+category:
+  - core/mixin
+  - core/mixin/media-query
+---
+Specific size only media query
+
+### scss
+```scss
+//
+// @param  size|length  $size  width
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-foo {
+  @include core.media-only(md) {
+    ...
+  }
+}
+```
+*/
+
+@mixin media-only($size) {
+  $sizes-keys: map.keys(variable.$sizes);
+  $min-key: list.nth($sizes-keys, 1);
+  $max-key: list.nth($sizes-keys, -1);
+
+  @if $min-key == $size {
+    @include media-max($size) {
+      @content;
+    }
+  } @else if $max-key == $size {
+    @include media-min($size) {
+      @content;
+    }
+  } @else {
+    @media (min-width: function.min($size)) and (max-width: function.max($size)) {
+      @content;
+    }
+  }
+}

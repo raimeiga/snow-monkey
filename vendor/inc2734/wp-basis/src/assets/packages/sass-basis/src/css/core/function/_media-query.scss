@@ -1,0 +1,144 @@
+@use "sass:map";
+@use "sass:meta";
+@use "../variable";
+
+/*
+---
+name: min()
+category:
+  - core/function
+  - core/function/media-query
+---
+Return min size.
+
+* If `$size` is key of `$_size`, return that value.
+* If `$size` is number, return this.
+
+### scss
+```scss
+//
+// @param  size|length  $size
+// @return length|false
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+@media (min-width: core.min(md)) {
+  ...
+}
+```
+*/
+
+@function min($size) {
+  @if (null != map.get(variable.$sizes, $size)) {
+    @return map.get(variable.$sizes, $size);
+  } @else if ('number' == meta.type-of($size)) {
+    @return $size;
+  }
+  @return false;
+}
+
+/*
+---
+name: max()
+category:
+  - core/function
+  - core/function/media-query
+---
+Return max size.
+
+* If `$size` is key of `$_size`, return that max value.
+* If `$size` is number, return this.
+
+### scss
+```scss
+//
+// @param  size|length  $size
+// @return length|false
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+@media (max-width: core.max(md)) {
+  ...
+}
+```
+*/
+
+@function max($size) {
+  $next_size: next-size-key($size);
+  @if (false != $next_size) {
+    $max: map.get(variable.$sizes, $next_size) - .1;
+    @return $max;
+  } @else if ('number' == meta.type-of($size)) {
+    @return $size;
+  }
+  @return false;
+}
+
+/*
+---
+name: prev-size-key()
+category:
+  - core/function
+  - core/function/media-query
+---
+Return prev key of `$_size`
+
+### scss
+```scss
+//
+// @param  size  $size
+// @return size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+$prev_size_key: core.prev-size-key(md); // => sm
+```
+*/
+
+@function prev-size-key($size) {
+  $prev: false;
+  @each $key, $value in variable.$sizes {
+    @if ($key == $size) {
+      @return $prev;
+    }
+    $prev: $key;
+  }
+  @return false;
+}
+
+/*
+---
+name: next-size-key()
+category:
+  - core/function
+  - core/function/media-query
+---
+Return next key of `$_size`
+
+### scss
+```scss
+//
+// @param  size  $size
+// @return size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+$next_size_key: core.next-size-key(md); // => lg
+```
+*/
+
+@function next-size-key($size) {
+  $next: false;
+  @each $key, $value in variable.$sizes {
+    @if ($key == $size) {
+      $next: $key;
+    } @else if (false != $next) {
+      @return $key;
+    }
+  }
+  @return false;
+}

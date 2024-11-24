@@ -1,0 +1,81 @@
+@use "../mixin";
+
+/*
+---
+name: radio()
+category:
+  - core/abstract
+  - core/abstract/form
+---
+Abstract radio button component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-radio {
+  @include core.radio();
+}
+```
+
+### html
+```ejs
+<label>
+  <span class="c-radio">
+    <input type="radio" class="c-radio__control">
+    <span class="c-radio__label">...</span>
+  </span>
+</label>
+```
+*/
+
+@mixin radio() {
+  display: inline-flex;
+  gap: var(--_s-2);
+
+  &__control {
+    @include mixin.form-control-base-border();
+  }
+
+  &__control {
+    flex: 0 0 auto;
+    appearance: none;
+    margin: calc(var(--_half-leading)* 1em) 0 0;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background-color: var(--_color-white);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .035);
+    @include mixin.square(16px);
+    border-radius: 100%;
+
+    &::before {
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
+      margin: 0 !important;
+      @include mixin.circle(6px);
+      background-color: var(--_color-white);
+      visibility: hidden;
+    }
+
+    &:checked {
+      background-color: #3a87fd;
+      border-color: #3a87fd;
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        visibility: visible;
+      }
+    }
+
+    &:disabled {
+      background-color: var(--_lightest-color-gray);
+
+      &::before {
+        background-color: var(--_dark-color-gray);
+      }
+    }
+  }
+}

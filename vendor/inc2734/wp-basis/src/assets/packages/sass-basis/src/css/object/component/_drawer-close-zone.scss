@@ -1,0 +1,9 @@
+@use "../../core/abstract";
+
+.c-drawer-close-zone {
+  @include abstract.drawer-close-zone();
+
+  &--fixed {
+    position: fixed;
+  }
+}

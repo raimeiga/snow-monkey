@@ -1,0 +1,38 @@
+@use "../mixin";
+
+/*
+---
+name: entries()
+category:
+  - core/abstract
+---
+Abstract entries component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-entries {
+  @include core.entries();
+  boder-top: 1px solid var(--_light-color-gray);
+
+  &__item {
+    padding: var(--_padding1) 0;
+    boder-bottom: 1px solid var(--_light-color-gray);
+  }
+}
+```
+
+### html
+```ejs
+<ul class="c-entries">
+  <li class="c-entries__item">
+    ...
+  </li>
+</ul>
+```
+*/
+
+@mixin entries() {
+  @include mixin.list-unstyled();
+}

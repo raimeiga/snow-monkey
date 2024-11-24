@@ -1,0 +1,50 @@
+/*
+---
+name: pagination()
+category:
+  - core/abstract
+---
+Abstract pagination component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-pagination {
+  @include core.pagination();
+  text-align: center;
+  font-size: 0;
+
+  &__item,
+  &__item-link,
+  &__item-ellipsis {
+    margin: 0 3px;
+    display: inline-flex;
+    @include core.square(30px);
+    align-items: center;
+    justify-content: center;
+  }
+}
+```
+
+### html
+```ejs
+<div class="c-pagination">
+  <span class="c-pagination__item" aria-current="page">1</span>
+  <a class="c-pagination__item-link">2</a>
+  <span class="c-pagination__item-ellipsis" aria-hidden="true">…</span>
+  <a class="c-pagination__item-link">99</a>
+  <a class="c-pagination__item-link">100</a>
+</div>
+```
+*/
+
+@mixin pagination() {
+  &__item,
+  &__item-link,
+  &__item-ellipsis {
+    display: inline-block;
+    line-height: 1;
+    text-decoration: none;
+  }
+}

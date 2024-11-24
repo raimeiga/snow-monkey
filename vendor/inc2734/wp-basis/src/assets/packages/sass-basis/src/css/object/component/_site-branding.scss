@@ -1,0 +1,22 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-site-branding
+category:
+  - object/component
+  - object/component/site-branding
+---
+Site branding component
+
+### html
+```html
+<div class="c-site-branding">
+  <h1 class="c-site-branding__title">...</h1>
+</div>
+```
+*/
+
+.c-site-branding {
+  @include abstract.site-branding();
+}

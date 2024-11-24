@@ -1,0 +1,72 @@
+@use '../../../css/basis';
+
+@use 'foundation/foundation';
+
+@use 'layout/contents';
+@use 'layout/footer';
+@use 'layout/header';
+@use 'layout/layout';
+
+@use 'object/component/btn';
+@use 'object/component/copyright';
+@use 'object/component/drawer';
+@use 'object/component/dummy-image';
+@use 'object/component/entry';
+@use 'object/component/ib-row';
+@use 'object/component/lattice';
+@use 'object/component/meta';
+@use 'object/component/page-header';
+@use 'object/component/site-branding';
+
+@use 'object/project/global-nav';
+@use 'object/project/local-nav';
+@use 'object/project/social-nav';
+@use 'object/project/table-of-contents';
+
+:root {
+  --color-primary: #00DAE6;
+}
+
+:where(.aigis-preview) {
+  min-height: 150px;
+  overflow: hidden;
+  @include basis.set-content-level(1);
+}
+
+@for $i from -2 through 7 {
+  .font-size-level\:#{ $i } {
+    @include basis.set-font-size-level($i);
+
+    position: relative;
+    &::before {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      content: 'level: #{ $i }';
+      display: inline-block;
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: .25em .5em;
+    }
+  }
+}
+
+@for $i from -2 through 7 {
+  .fluid-font-size-level\:#{ $i } {
+    @include basis.set-fluid-font-size-level($i);
+
+    position: relative;
+    &::before {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      content: 'level: #{ $i }';
+      display: inline-block;
+      background-color: #111;
+      color: #fff;
+      font-size: 12px;
+      padding: .25em .5em;
+    }
+  }
+}

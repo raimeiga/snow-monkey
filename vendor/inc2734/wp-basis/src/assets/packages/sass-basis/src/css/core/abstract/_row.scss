@@ -1,0 +1,42 @@
+/*
+---
+name: row()
+category:
+  - core/abstract
+  - core/abstract/grid-system/flexbox
+---
+Abstract row component of flexbox based grid system
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-row {
+  @include core.row();
+
+  &__col {
+    flex: 0 1 100%;
+    max-width: 100%;
+
+    &--1-3 {
+      flex-basis: 33.33333%;
+      max-width: 33.33333%;
+    }
+  }
+}
+```
+
+### html
+```ejs
+<div class="c-row">
+  <div class="c-row__col c-row__col--1-3">
+    ...
+  </div>
+</div>
+```
+*/
+
+@mixin row() {
+  display: flex;
+  flex-wrap: wrap;
+}

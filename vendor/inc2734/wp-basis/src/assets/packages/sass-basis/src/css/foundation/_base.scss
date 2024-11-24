@@ -1,0 +1,252 @@
+@use "../core/mixin";
+
+:where(
+  html,
+  body,
+  p,
+  ol,
+  ul,
+  li,
+  dl,
+  dt,
+  dd,
+  table,
+  blockquote,
+  figure,
+  fieldset,
+  legend,
+  pre,
+  iframe,
+  hr,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+) {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--_global--font-size-px);
+  line-break: normal;
+  hanging-punctuation: allow-end;
+  -webkit-text-size-adjust: 100%;
+}
+
+:where(body) {
+  background-color: var(--_global--background-color);
+  color: var(--_color-text);
+  font-family: var(--_global--font-family);
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  // -moz-osx-font-smooting: grayscale; // White out elements will activate this.
+  @include mixin.set-font-size-level(0);
+}
+
+:where(
+  code,
+  kbd,
+  pre,
+  samp
+) {
+  @include mixin.set-font-size-level(-1);
+  font-family: '_', monospace;
+}
+
+:where(
+  code,
+  kbd
+) {
+  background-color: var(--_lighter-color-gray);
+  border-radius: var(--_global--border-radius);
+  padding: 2px 6px;
+}
+
+pre {
+  overflow: auto;
+
+  code {
+    display: block;
+    background-color: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+:where(
+  input,
+  textarea,
+  keygen,
+  select,
+  button
+) {
+  font-family: var(--_global--font-family);
+}
+
+:where(
+  input,
+  textarea,
+  optgroup,
+  select,
+  button
+) {
+  @include mixin.set-font-size-level(0);
+}
+
+label {
+  cursor: pointer;
+}
+
+:where(figure, picture) {
+  :where(img, video) {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: table;
+  }
+}
+
+img,
+video {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+figcaption {
+  @include mixin.set-font-size-level(-1);
+  margin: var(--_margin-2) 0 0;
+  caption-side: bottom;
+  text-align: left;
+}
+
+/*
+---
+name: Headings
+category:
+  - foundation/typography
+  - foundation/typography/headings
+---
+Headings
+
+### html
+```html
+<h1>h1</h1>
+<h2>h2</h2>
+<h3>h3</h3>
+<h4>h4</h4>
+<h5>h5</h5>
+<h6>h6</h6>
+```
+*/
+
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6
+) {
+  font-weight: bold;
+}
+
+h1 {
+  @include mixin.set-fluid-font-size-level(4);
+}
+
+h2 {
+  @include mixin.set-fluid-font-size-level(3);
+}
+
+h3 {
+  @include mixin.set-fluid-font-size-level(2);
+}
+
+h4 {
+  @include mixin.set-fluid-font-size-level(1);
+}
+
+h5 {
+  @include mixin.set-fluid-font-size-level(0);
+}
+
+h6 {
+  @include mixin.set-fluid-font-size-level(0);
+}
+
+/*
+---
+name: Lists
+category:
+  - foundation/typography
+  - foundation/typography/lists
+---
+Lists
+
+### html
+```html
+<h3>ul</h3>
+<ul>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>
+    consectetur adipisicing elit
+    <ul>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>
+        consectetur adipisicing elit
+        <ul>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+        </ul>
+      </li>
+      <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+    </ul>
+  </li>
+  <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+</ul>
+
+<h3>ol</h3>
+<ol>
+  <li>Lorem ipsum dolor sit amet</li>
+  <li>
+    consectetur adipisicing elit
+    <ol>
+      <li>Lorem ipsum dolor sit amet</li>
+      <li>
+        consectetur adipisicing elit
+        <ol>
+          <li>Lorem ipsum dolor sit amet</li>
+          <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+        </ol>
+      </li>
+      <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+    </ol>
+  </li>
+  <li>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+</ol>
+
+<h3>dl</h3>
+<dl>
+  <dt>Lorem ipsum dolor sit amet</dt>
+  <dd>consectetur adipisicing elit</dd>
+  <dt>Lorem ipsum dolor sit amet</dt>
+  <dd>consectetur adipisicing elit</dd>
+</dl>
+```
+*/
+
+:where(
+  ul,
+  ol
+) {
+  padding-left: var(--_list-item-indent);
+}
+
+:where(dt) {
+  font-weight: bold;
+}

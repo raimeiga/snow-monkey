@@ -1,0 +1,24 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-page-effect
+category:
+  - object/component
+  - object/component/page-effect
+---
+Page effect component
+
+### html
+```ejs
+<div class="c-page-effect" data-page-effect="fadein" aria-hidden="false">
+  <div class="c-page-effect__item">
+    Loading...
+  </div>
+</div>
+```
+*/
+
+.c-page-effect {
+  @include abstract.page-effect();
+}

@@ -1,0 +1,58 @@
+/*
+---
+name: responsive-table()
+category:
+  - core/abstract
+---
+Abstract responsive table component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.responsive-table {
+  @include core.media-max(sm) {
+    @include core.responsive-table();
+  }
+}
+```
+
+### html
+```html
+<div class="c-responsive-table">
+  <table style="width: 1000px">
+    <tr>
+      <th>th</th>
+      <td>td</td>
+      <td>td</td>
+    </tr>
+    <tr>
+      <th>th</th>
+      <td>td</td>
+      <td>td</td>
+    </tr>
+  </table>
+</div>
+```
+*/
+
+@mixin responsive-table() {
+  overflow: auto;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar{
+    height: 5px;
+  }
+
+  &::-webkit-scrollbar-track{
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #bcbcbc;
+  }
+
+  > table {
+    width: 100%;
+  }
+}

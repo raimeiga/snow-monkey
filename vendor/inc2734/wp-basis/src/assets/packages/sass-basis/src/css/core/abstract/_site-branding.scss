@@ -1,0 +1,33 @@
+@use "../mixin";
+
+/*
+---
+name: site-branding()
+category:
+  - core/abstract
+---
+Abstract site branding component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-site-branding {
+  @include core.site-branding();
+}
+```
+
+### html
+```ejs
+<div class="c-site-branding">
+  <h1 class="c-site-branding__title">...</h1>
+</div>
+```
+*/
+
+@mixin site-branding() {
+  &__title {
+    margin: 0;
+    @include mixin.set-fluid-font-size-level(3);
+  }
+}

@@ -1,0 +1,71 @@
+@use '../../src/css/mixin/cover-img' as *;
+
+.wpaw-showcase {
+  position: relative;
+  display: block;
+  text-decoration: none;
+  overflow: hidden;
+
+  &__bgimage {
+    @include cover-img();
+
+		& {
+	    position: absolute;
+			inset: 0;
+		}
+  }
+
+  &__mask {
+    position: absolute;
+		inset: 0;
+    content: '';
+    background-color: rgba(#000, .7);
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__figure {
+    text-align: center;
+  }
+
+  &__title {
+    color: var(--_color-white);
+  }
+
+  &__lead {
+    color: var(--_color-white);
+  }
+
+  &__action {
+    text-align: center;
+  }
+
+  &__more {
+    display: inline-block;
+    background-color: var(--_color-white);
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /**
+   * For right image
+   */
+  &--format-1 {
+  }
+
+  /**
+   * For left image
+   */
+  &--format-2 {
+  }
+
+  /**
+   * For bottom image
+   */
+  &--format-3 {
+  }
+}

@@ -1,0 +1,142 @@
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+/*
+---
+name: is-int()
+category:
+  - core/function
+  - core/function/condition
+---
+Checks for a valid int
+
+### scss
+```scss
+//
+// @param   mixed  $value
+// @return  bool
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+@if (core.is-int($value)) {
+  z-index: $value;
+}
+```
+*/
+@function is-int($value) {
+  @if ('number' == meta.type-of($value) and '' == math.unit($value) and $value == math.ceil($value) and $value == math.abs($value)) {
+    @return true;
+  }
+
+  @return false;
+}
+
+/*
+---
+name: is-length()
+category:
+  - core/function
+  - core/function/condition
+---
+Checks for a valid CSS length
+
+### scss
+```scss
+//
+// @param   mixed  $value
+// @return  bool
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+@if (core.is-length($value)) {
+  width: $value;
+}
+```
+*/
+
+@function is-length($value) {
+  @if ('auto' == $value) {
+    @return true;
+  }
+
+  @if ('number' == meta.type-of($value)) {
+    @if ('' != math.unit($value) or 0 == $value) {
+      @return true;
+    }
+  }
+
+  @if ('string' == meta.type-of($value)) {
+    @if (1 == string.index($value, 'calc')) {
+      @return true;
+    }
+  }
+
+  @return false;
+}
+
+/*
+---
+name: is-null()
+category:
+  - core/function
+  - core/function/condition
+---
+Checks for a valid null
+
+### scss
+```scss
+//
+// @param   mixed  $value
+// @return  bool
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+@if (not core.is-null($value)) {
+  width: $value;
+}
+```
+*/
+
+@function is-null($value) {
+  @if ('null' == meta.type-of($value)) {
+    @return true;
+  }
+
+  @return false;
+}
+
+/*
+---
+name: is-number()
+category:
+  - core/function
+  - core/function/condition
+---
+Checks for a valid number
+
+### scss
+```scss
+//
+// @param   mixed  $value
+// @return  bool
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+@if (core.is-number($value)) {
+  z-index: $value;
+}
+```
+*/
+
+@function is-number($value) {
+  @if ('number' == meta.type-of($value) and '' == math.unit($value)) {
+    @return true;
+  }
+
+  @return false;
+}

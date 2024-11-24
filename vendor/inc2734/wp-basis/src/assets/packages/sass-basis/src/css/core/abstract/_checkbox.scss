@@ -1,0 +1,85 @@
+@use "../mixin";
+
+/*
+---
+name: checkbox()
+category:
+  - core/abstract
+  - core/abstract/form
+---
+Abstract checkbox component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-checkbox {
+  @include core.checkbox();
+}
+```
+
+### html
+```ejs
+<label>
+  <span class="c-checkbox">
+    <input type="checkbox" class="c-checkbox__control">
+    <span class="c-checkbox__label">...</span>
+  </span>
+</label>
+```
+*/
+
+@mixin checkbox() {
+  display: inline-flex;
+  gap: var(--_s-2);
+
+  &__control {
+    @include mixin.form-control-base-border();
+  }
+
+  &__control {
+    flex: 0 0 auto;
+    appearance: none;
+    margin: calc(var(--_half-leading)* 1em) 0 0;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: var(--_color-white);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .035);
+    @include mixin.square(16px);
+
+    &::before {
+      top: calc(50% - 5px);
+      left: calc(50% - 3px);
+      transform: rotate(45deg);
+      margin: 0 !important;
+      height: 8px;
+      width: 6px;
+      border-style: solid;
+      border-color: var(--_color-white);
+      border-width: 0 2px 2px 0;
+      visibility: hidden;
+    }
+
+    &:checked {
+      background-color: #3a87fd;
+      border-color: #3a87fd;
+
+      &::before {
+        position: absolute;
+        content: '';
+        display: block;
+        visibility: visible;
+      }
+    }
+
+    &:disabled {
+      background-color: var(--_lightest-color-gray);
+
+      &::before {
+        border-color: var(--_dark-color-gray);
+      }
+    }
+  }
+}

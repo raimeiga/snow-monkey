@@ -1,0 +1,614 @@
+@use "sass:math";
+@use "../function";
+@use "../mixin";
+@use "./row" as *;
+
+/*
+---
+name: ib-row()
+category:
+  - core/abstract
+  - core/abstract/grid-system/inline-block
+tag:
+  - deprecated
+---
+Abstract row component of inline-block based grid system
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-ib-row {
+  @include core.ib-row();
+
+  &__col {
+    @include core.ib-row__col();
+
+    &--1-3 {
+      @include core.ib-row__col(1, 3);
+    }
+
+    &--offset-1-3 {
+      @include core.ib-row__col--offset(1, 3);
+    }
+  }
+}
+```
+
+### html
+```html
+<div class="c-ib-row">
+  <div class="c-ib-row__col c-ib-row__col--1-3">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </div>
+  <div class="c-ib-row__col c-ib-row__col--1-3">
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div>
+</div>
+```
+*/
+
+@mixin ib-row() {
+  @warn 'ib-row() is deprecated.';
+
+  display: block;
+  font-size: 0;
+  letter-spacing: 0;
+}
+
+/*
+---
+name: ib-row__col()
+category:
+  - core/abstract
+  - core/abstract/grid-system/inline-block
+tag:
+  - deprecated
+---
+Abstract column element of inline-block based grid system
+
+### scss
+```scss
+//
+// @param  int  $columns      molecule column size
+// @param  int  $max-columns  denominator column size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-ib-row {
+  @include core.ib-row();
+
+  &__col {
+    @include core.ib-row__col();
+
+    &--1-3 {
+      @include core.ib-row__col(1, 3);
+    }
+  }
+}
+```
+
+### html
+```html
+<div class="c-ib-row">
+  <div class="c-ib-row__col c-ib-row__col--1-3">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </div>
+  <div class="c-ib-row__col c-ib-row__col--1-3">
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div>
+</div>
+```
+*/
+
+@mixin ib-row__col($columns: null, $max-columns: null) {
+  @warn 'ib-row__col() is deprecated.';
+
+  display: inline-block;
+  @include mixin.set-font-size-level(0);
+  text-align: left;
+  vertical-align: top;
+
+  @if (not function.is-null($columns) and not function.is-null($max-columns)) {
+    $width: math.percentage(math.div($columns, $max-columns));
+    @include ib-row__col--width($width);
+  } @else {
+    @include ib-row__col--width(100%);
+  }
+}
+
+/*
+---
+name: ib-row__col--width()
+category:
+  - core/abstract
+  - core/abstract/grid-system/inline-block
+tag:
+  - deprecated
+---
+Sets column width of inline-block based grid system
+
+### scss
+```scss
+//
+// @param  length  $width
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-ib-row {
+  @include core.ib-row();
+
+  &__col {
+    @include core.ib-row__col();
+    @include core.ib-row__col--width(auto);
+  }
+}
+```
+*/
+
+@mixin ib-row__col--width($width) {
+  @warn 'ib-row__col--width() is deprecated.';
+
+  @if ('auto' == $width) {
+    width: auto;
+  } @else {
+    width: $width;
+  }
+}
+
+/*
+---
+name: ib-row__col--offset()
+category:
+  - core/abstract
+  - core/abstract/grid-system/inline-block
+tag:
+  - deprecated
+---
+Sets column offset of inline-block based grid system
+
+### scss
+```scss
+//
+// @param  int  $columns      molecule column size
+// @param  int  $max-columns  denominator column size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-ib-row {
+  @include core.ib-row();
+
+  &__col {
+    @include core.ib-row__col();
+    @include core.ib-row__col--offset(1, 3);
+  }
+}
+```
+*/
+
+@mixin ib-row__col--offset($columns: null, $max-columns: null) {
+  @warn 'ib-row__col--offset() is deprecated.';
+
+  @include row__col--offset($columns, $max-columns);
+}
+
+/*
+---
+name: ib-row--margin()
+category:
+  - core/abstract
+  - core/abstract/grid-system/inline-block
+tag:
+  - deprecated
+---
+Sets row margin of inline-block based grid system
+
+### scss
+```scss
+//
+// @param  int  $coefficient
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-ib-row {
+  @include core.ib-row();
+  @include core.ib-row--margin(1);
+}
+```
+*/
+
+@mixin ib-row--margin($coefficient) {
+  @warn 'ib-row--margin() is deprecated.';
+
+  @include core.row--margin($coefficient);
+}
+
+/*
+---
+name: ib-row__col--margin()
+category:
+  - core/abstract
+  - core/abstract/grid-system/inline-block
+tag:
+  - deprecated
+---
+Sets column margin of inline-block based grid system
+
+### scss
+```scss
+//
+// @param  int  $coefficient
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-ib-row {
+  @include core.ib-row();
+  @include core.ib-row--margin(1);
+}
+```
+*/
+
+@mixin ib-row__col--margin($coefficient) {
+  @warn 'ib-row__col--margin() is deprecated.';
+
+  @include core.row__col--margin($coefficient);
+}
+
+/*
+---
+name: row__col()
+category:
+  - core/abstract
+  - core/abstract/grid-system/flexbox
+tag:
+  - deprecated
+---
+Abstract column element of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  int  $columns      molecule column size
+// @param  int  $max-columns  denominator column size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-row {
+  @include core.row();
+
+  &__col {
+    @include core.row__col();
+
+    &--1-3 {
+      @include core.row__col(1, 3);
+    }
+  }
+}
+```
+
+### html
+```ejs
+<div class="c-row">
+  <div class="c-row__col c-row__col--1-3">
+    ...
+  </div>
+</div>
+```
+*/
+
+@mixin row__col($columns: null, $max-columns: null) {
+  @warn 'row__col() is deprecated.';
+
+  max-width: 100%;
+
+  @if (not function.is-null($columns) and not function.is-null($max-columns)) {
+    $width: math.percentage(math.div($columns, $max-columns));
+    @include row__col--width($width);
+  } @else {
+    @include row__col--width(1);
+  }
+}
+
+/*
+---
+name: row__col--width()
+category:
+  - core/abstract
+  - core/abstract/grid-system/flexbox
+tag:
+  - deprecated
+---
+Sets column width of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  length  $width
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-row {
+  @include core.row();
+
+  &__col {
+    @include core.row__col();
+    @include core.row__col--width(auto);
+  }
+}
+```
+*/
+
+@mixin row__col--width($width) {
+  @warn 'row__col--width() is deprecated.';
+
+  @if ('auto' == $width) {
+    flex: 1 1 auto;
+  } @else if (1 == $width) {
+    flex: 1 1 0%;
+  } @else {
+    flex: 0 1 $width;
+    max-width: $width;
+  }
+}
+
+/*
+---
+name: row__col--offset()
+category:
+  - core/abstract
+  - core/abstract/grid-system/flexbox
+tag:
+  - deprecated
+---
+Sets column offset of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  int  $columns      molecule column size
+// @param  int  $max-columns  denominator column size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-row {
+  @include core.row();
+
+  &__col {
+    @include core.row__col();
+    @include core.row__col--offset(1, 3);
+  }
+}
+```
+*/
+
+@mixin row__col--offset($columns: null, $max-columns: null) {
+  @warn 'row__col--offset() is deprecated.';
+
+  @if (not function.is-null($columns) and not function.is-null($max-columns)) {
+    margin-left: math.percentage(math.div($columns, $max-columns));
+  }
+  @if (0 == $columns) {
+    margin-left: 0;
+  }
+}
+
+/*
+---
+name: row--margin()
+category:
+  - core/abstract
+  - core/abstract/grid-system/flexbox
+tag:
+  - deprecated
+---
+Sets row margin of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  int  $coefficient
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-row {
+  @include core.row();
+  @include core.row--margin(1);
+}
+```
+*/
+
+@mixin row--margin($coefficient) {
+  @warn 'row--margin() is deprecated.';
+
+  margin-right: calc((var(--_space) * var(--_margin-scale) * #{ $coefficient } / 2) * -1);
+  margin-left: calc((var(--_space) * var(--_margin-scale) * #{ $coefficient } / 2) * -1);
+  margin-bottom: calc(var(--_space) * var(--_margin-scale) * #{ $coefficient } * -1);
+}
+
+/*
+---
+name: row__col--margin()
+category:
+  - core/abstract
+  - core/abstract/grid-system/flexbox
+tag:
+  - deprecated
+---
+Sets column margin of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  int  $coefficient
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-row__col {
+  @include core.row__col();
+  @include core.row__col--margin(1);
+}
+```
+*/
+
+@mixin row__col--margin($coefficient) {
+  @warn 'row__col--margin() is deprecated.';
+
+  padding-right: calc((var(--_space) * var(--_margin-scale) * #{ $coefficient } / 2));
+  padding-left: calc((var(--_space) * var(--_margin-scale) * #{ $coefficient } / 2));
+  margin-bottom: calc(var(--_space) * var(--_margin-scale) * #{ $coefficient } * -1);
+}
+
+/*
+---
+name: lattice()
+category:
+  - core/abstract
+  - core/abstract/grid-system/lattice
+tag:
+  - deprecated
+---
+Abstract row component of flexbox based grid system
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-lattice {
+  @include core.lattice();
+
+  &__col {
+    @include core.lattice__col();
+
+    &--1-3 {
+      @include core.lattice__col(1, 3);
+    }
+  }
+}
+```
+
+### html
+```html
+<div class="c-lattice">
+  <div class="c-lattice__col c-lattice__col--1-3">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </div>
+  <div class="c-lattice__col c-lattice__col--1-3">
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div>
+</div>
+```
+*/
+
+@mixin lattice() {
+  @warn 'lattice() is deprecated.';
+
+  @include row();
+  margin-right: calc(var(--_margin1) * .5 * -1);
+  margin-left: calc(var(--_margin1) * .5 * -1);
+  margin-bottom: calc(var(--_margin1) -1);
+}
+
+/*
+---
+name: lattice__col()
+category:
+  - core/abstract
+  - core/abstract/grid-system/lattice
+tag:
+  - deprecated
+---
+Abstract column element of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  int  $columns      molecule column size
+// @param  int  $max-columns  denominator column size
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-lattice {
+  @include core.lattice();
+
+  &__col {
+    @include core.lattice__col();
+
+    &--1-3 {
+      @include core.lattice__col(1, 3);
+    }
+  }
+}
+```
+
+### html
+```html
+<div class="c-lattice">
+  <div class="c-lattice__col c-lattice__col--1-3">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </div>
+  <div class="c-lattice__col c-lattice__col--1-3">
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  </div>
+</div>
+```
+*/
+
+@mixin lattice__col($columns: null, $max-columns: null) {
+  @warn 'lattice__col() is deprecated.';
+
+  @include row__col($columns, $max-columns);
+  padding-right: calc(var(--_margin1) * .5);
+  padding-left: calc(var(--_margin1) * .5);
+  margin-bottom: var(--_margin1);
+}
+
+/*
+---
+name: lattice__col--width()
+category:
+  - core/abstract
+  - core/abstract/grid-system/lattice
+tag:
+  - deprecated
+---
+Sets column width of flexbox based grid system
+
+### scss
+```scss
+//
+// @param  length  $width
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-lattice {
+  @include core.lattice();
+
+  &__col {
+    @include core.lattice__col(1, 2);
+
+    @include core.media-min(lg) {
+      @include core.lattice__col--width(1 / 3 * 100%);
+    }
+  }
+}
+```
+*/
+
+@mixin lattice__col--width($width) {
+  @warn 'lattice__col--width() is deprecated.';
+
+  @include row__col--width($width);
+}
+

@@ -1,0 +1,59 @@
+@use '../../widget/slider/widget' as *;
+@use '../../widget/pr-box/widget' as *;
+@use '../../widget/showcase/widget' as *;
+@use '../../widget/pickup-slider/widget' as *;
+@use '../../widget/google-adsense/widget' as *;
+@use '../../widget/carousel-any-posts/widget' as *;
+@use '../../widget/local-nav/widget' as *;
+@use './mixin/cover-img' as *;
+
+.wpaw-term {
+  display: inline-block;
+  background-color: var(--_color-black);
+  color: var(--_color-white);
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 6px 2px;
+}
+
+.wpaw-posts-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    margin: 0;
+    padding: 0;
+
+    > a {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      text-decoration: none;
+    }
+  }
+
+  &__figure {
+    margin-right: 1em;
+    flex: none;
+    height: 90px;
+    width: 90px;
+    background-color: var(--_color-gray);
+    @include cover-img();
+  }
+
+  &__body {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    > * {
+      flex: none;
+    }
+  }
+
+  &__date {
+    margin-top: auto;
+  }
+}

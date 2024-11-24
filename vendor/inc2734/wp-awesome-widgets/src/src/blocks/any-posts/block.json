@@ -1,0 +1,32 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "wp-awesome-widgets/any-posts",
+	"title": "[WPAW] Any posts",
+	"description": "",
+	"category": "widgets",
+	"textdomain": "inc2734-wp-awesome-widgets",
+	"attributes": {
+		"showThumbnail": {
+			"type": "boolean",
+			"default": true
+		},
+		"showTaxonomy": {
+			"type": "boolean",
+			"default": true
+		},
+		"items": {
+			"type": "string",
+			"default": "[{\"id\":0,\"title\":\"\",\"url\":\"\"}]"
+		},
+		"clientId": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"anchor": true,
+		"className": false,
+		"customClassName": false
+	},
+	"editorScript": "file:./index.js"
+}

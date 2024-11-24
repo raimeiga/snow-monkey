@@ -1,0 +1,24 @@
+@use "../../../../../css/core";
+
+.l-body > .c-drawer {
+  background-color: var(--_color-text);
+  padding: var(--_padding-1);
+  color: var(--_color-white);
+
+  a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    padding: var(--_padding-2) 0;
+  }
+
+  ul {
+    @include core.list-unstyled();
+  }
+
+  li {
+    li {
+      padding: 0 0 0 var(--_padding-1);
+    }
+  }
+}

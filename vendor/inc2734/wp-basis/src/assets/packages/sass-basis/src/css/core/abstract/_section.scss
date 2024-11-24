@@ -1,0 +1,46 @@
+/*
+---
+name: section()
+category:
+  - core/abstract
+---
+Abstract section component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-section {
+  @include core.section();
+  padding: var(--_padding3) 0;
+
+  &__title {
+    margin-bottom: var(--_margin2);
+    @include core.set-font-size-level(3);
+    text-align: center;
+  }
+
+  &__content {
+    @include core.set-content-level(1);
+  }
+}
+```
+
+### html
+```ejs
+<section class="c-section">
+  <div class="_c-container">
+    <h2 class="c-section__title">...</h2>
+    <div class="c-section__content">
+      ...
+    </div>
+  </div>
+</section>
+```
+*/
+
+@mixin section() {
+  &__title {
+    margin-top: 0;
+  }
+}

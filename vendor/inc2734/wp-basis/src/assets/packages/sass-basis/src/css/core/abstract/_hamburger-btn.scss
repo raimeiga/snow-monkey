@@ -1,0 +1,113 @@
+@use "sass:math";
+@use "sass:map";
+@use "../mixin";
+
+/*
+---
+name: hamburger-btn()
+category:
+  - core/abstract
+---
+Abstract hamburger button component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-hamburger-btn {
+  @include core.hamburger-btn((
+    height: 16px,
+    width: 22px,
+    bar-height: 2px,
+    color: var(--_color-text),
+  ));
+}
+```
+
+### js
+```js
+import BasisHamburgerBtn from 'node_modules/sass-basis/src/js/_hamburger-btn.js';
+new BasisHamburgerBtn({
+  btn: '.c-hamburger-btn'
+});
+```
+
+### html
+```ejs
+<button id="hamburger-btn" class="c-hamburger-btn" role="button" aria-expanded="false" aria-controls="drawer">
+  <span class="c-hamburger-btn__bars">
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+  </span>
+  <span class="c-hamburger-btn__label">MENU</span>
+</button>
+
+<nav id="drawer" aria-labelledby="hamburger-btn">...</nav>
+```
+*/
+
+@mixin hamburger-btn($params: ()) {
+  $params: map.merge(
+    (
+      height: 16px,
+      width: 22px,
+      bar-height: 2px,
+      color: currentColor,
+    ),
+    $params
+  );
+
+  $height: map.get($params, 'height');
+  $width: map.get($params, 'width');
+  $bar-height: map.get($params, 'bar-height');
+
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  padding: 0;
+  vertical-align: middle;
+
+  &__bars {
+    position: relative;
+    display: inline-block;
+    box-sizing: content-box;
+    height: $height;
+    width: $width;
+  }
+
+  &__bar {
+    position: absolute;
+    right: 0;
+    left: 0;
+    display: block;
+    height: $bar-height;
+    @include mixin.transition(transform);
+
+    @each $color in map.get($params, 'color') {
+      background-color: $color;
+    }
+
+    &:nth-of-type(1) {
+      top: 0;
+    }
+
+    &:nth-of-type(2) {
+      top: (math.div($height, 2) - math.div($bar-height, 2));
+    }
+
+    &:nth-of-type(3) {
+      top: ($height - $bar-height);
+    }
+  }
+
+  &__label {
+    display: block;
+    font-family: "Arial Narrow", Verdana, sans-serif;
+    font-size: 8px;
+    line-height: 1;
+  }
+}

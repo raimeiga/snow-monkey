@@ -1,0 +1,40 @@
+/*
+---
+name: responsive-container()
+category:
+  - core/abstract
+---
+Abstract responsive container component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-responsive-container-16-9 {
+  @include core.responsive-container();
+  padding-bottom: (9 / 16 * 100%);
+}
+```
+
+### html
+```ejs
+<div class="c-responsive-container-16-9">
+  <iframe></iframe>
+</div>
+```
+*/
+
+@mixin responsive-container() {
+  position: relative;
+  height: 0;
+
+  iframe,
+  embed,
+  object {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+}

@@ -1,0 +1,25 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-checkbox
+category:
+  - object/component
+  - object/component/checkbox
+---
+Checkbox component
+
+### html
+```html
+<label>
+  <span class="c-checkbox">
+    <input type="checkbox" class="c-checkbox__control">
+    <span class="c-checkbox__label">...</span>
+  </span>
+</label>
+```
+*/
+
+.c-checkbox {
+  @include abstract.checkbox();
+}

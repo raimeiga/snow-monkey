@@ -1,0 +1,159 @@
+@use "../variable";
+
+/*
+---
+name: set-between-content-level()
+category:
+  - core/mixin
+---
+Sets Child elements margin
+
+### scss
+```scss
+//
+// @param  int  $level
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.u-between-content {
+  @include core.set-between-content-level(1);
+}
+```
+
+### html
+```ejs
+<div class="u-between-content">
+  ...
+</div>
+```
+*/
+
+@mixin set-between-content-level($level) {
+	--_margin-top: 1;
+	--_margin-bottom: 0;
+
+  & > * {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  $margin: var(--_margin1);
+
+  @if -2 == $level {
+    $margin: var(--_margin-2);
+  } @else if -1 == $level {
+    $margin: var(--_margin-1);
+  } @else if 0 == $level {
+    $margin: var(--_margin0);
+  } @else if 1 == $level {
+    $margin: var(--_margin1);
+  } @else if 2 == $level {
+    $margin: var(--_margin2);
+  } @else if 3 == $level {
+    $margin: var(--_margin3);
+  } @else if 4 == $level {
+    $margin: var(--_margin4);
+  } @else if 5 == $level {
+    $margin: var(--_margin5);
+  } @else if 6 == $level {
+    $margin: var(--_margin6);
+  } @else if 7 == $level {
+    $margin: var(--_margin7);
+  }
+
+  & > :where(:not(:first-child)) {
+    margin-top: calc(#{ $margin } * var(--_margin-top));
+  }
+
+  & > :where(:not(:last-child)) {
+    margin-bottom: calc(#{ $margin } * var(--_margin-bottom));
+  }
+}
+
+/*
+---
+name: set-content-level()
+category:
+  - core/mixin
+---
+Sets Child elements margin
+
+### scss
+```scss
+//
+// @param  int  $level
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.u-content {
+  @include core.set-content-level(1);
+}
+```
+
+### html
+```ejs
+<div class="u-content">
+  ...
+</div>
+```
+*/
+
+@mixin set-content-level($level) {
+  @include set-between-content-level($level);
+
+  > h1 {
+    --_margin-top: var(--_h1-margin-top);
+    --_margin-bottom: var(--_h1-margin-bottom);
+
+    & + * {
+      --_margin-top: 0;
+    }
+  }
+
+  > h2 {
+    --_margin-top: var(--_h2-margin-top);
+    --_margin-bottom: var(--_h2-margin-bottom);
+
+    & + * {
+      --_margin-top: 0;
+    }
+  }
+
+  > h3 {
+    --_margin-top: var(--_h3-margin-top);
+    --_margin-bottom: var(--_h3-margin-bottom);
+
+    & + * {
+      --_margin-top: 0;
+    }
+  }
+
+  > h4 {
+    --_margin-top: var(--_h4-margin-top);
+    --_margin-bottom: var(--_h4-margin-bottom);
+
+    & + * {
+      --_margin-top: 0;
+    }
+  }
+
+  > h5 {
+    --_margin-top: var(--_h5-margin-top);
+    --_margin-bottom: var(--_h5-margin-bottom);
+
+    & + * {
+      --_margin-top: 0;
+    }
+  }
+
+  > h6 {
+    --_margin-top: var(--_h6-margin-top);
+    --_margin-bottom: var(--_h6-margin-bottom);
+
+    & + * {
+      --_margin-top: 0;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use "../mixin";
+
+/*
+---
+name: media()
+category:
+  - core/abstract
+---
+Abstract media component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-media {
+  @include core.media();
+
+  &__figure {
+    margin-right: var(--_margin1);
+  }
+}
+```
+
+### html
+```ejs
+<div class="c-media">
+  <div class="c-media__figure">
+    <img src="/basis/aigis_assets/images/dummy.jpg" style="width: 150px">
+  </div>
+  <div class="c-media__body">
+    ...
+  </div>
+</div>
+```
+*/
+
+@mixin media() {
+  display: flex;
+
+  &__figure {
+    flex: none;
+    @include mixin.background-image-cover();
+
+    > * {
+      vertical-align: top;
+      margin-top: calc(var(--_half-leading) * 1rem);
+    }
+  }
+
+  &__body {
+    flex: 1;
+  }
+}

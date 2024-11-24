@@ -1,0 +1,75 @@
+@use "sass:map";
+@use "sass:list";
+@use "../../core/variable";
+@use "../../core/mixin";
+
+/*
+---
+name: .u-visible
+category:
+  - object/utility
+  - object/utility/visible
+  - object/utility/visible/visible
+---
+Visible utility
+
+### html
+```html
+<div class="u-visible">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+</div>
+```
+```html
+<div class="u-hidden u-visible-sm">
+  u-hidden u-visible-sm
+</div>
+```
+```html
+<div class="u-hidden u-visible-md">
+  u-hidden u-visible-md
+</div>
+```
+```html
+<div class="u-hidden u-visible-md-up">
+  u-hidden u-visible-md-up
+</div>
+```
+```html
+<div class="u-hidden u-visible-lg">
+  u-hidden u-visible-lg
+</div>
+```
+```html
+<div class="u-hidden u-visible-lg-up">
+  u-hidden u-visible-lg-up
+</div>
+```
+```html
+<div class="u-hidden u-visible-xl">
+  u-hidden u-visible-xl
+</div>
+```
+*/
+
+.u-visible {
+  @include mixin.visible();
+}
+
+$_sizes-keys: map.keys(variable.$sizes);
+$_min-key: list.nth($_sizes-keys, 1);
+$_max-key: list.nth($_sizes-keys, -1);
+@each $size, $screen-min in variable.$sizes {
+  @if $size != $_min-key and $size != $_max-key {
+    .u-visible-#{ $size }-up {
+      @include mixin.media-min($size) {
+        @include mixin.visible();
+      }
+    }
+  }
+
+  .u-visible-#{ $size } {
+    @include mixin.media-only($size) {
+      @include mixin.visible();
+    }
+  }
+}

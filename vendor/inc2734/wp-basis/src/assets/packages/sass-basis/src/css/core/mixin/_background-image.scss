@@ -1,0 +1,49 @@
+/*
+---
+name: background-image-cover()
+category:
+  - core/mixin
+  - core/mixin/background-image
+---
+Background image cover + centering
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-foo {
+  @include core.background-image-cover();
+  background-image: url(...);
+}
+```
+*/
+
+@mixin background-image-cover() {
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+}
+
+/*
+---
+name: background-image-fixed()
+category:
+  - core/mixin
+  - core/mixin/background-image
+---
+Background image fixed
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-foo {
+  @include core.background-image-fixed();
+  background-image: url(...);
+}
+```
+*/
+
+@mixin background-image-fixed() {
+  background-attachment: fixed;
+}

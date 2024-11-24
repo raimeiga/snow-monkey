@@ -1,0 +1,28 @@
+@use "../../../../../css/core";
+
+.l-main > .c-entry {
+  .c-entry__header {
+    margin-bottom: var(--_margin1);
+  }
+
+  .c-entry__title {
+    border-bottom: 1px solid var(--_light-color-gray);
+    padding-bottom: var(--_padding-2);
+  }
+
+  .c-entry__content {
+    @include core.set-content-level(1);
+
+    pre {
+      padding: var(--_padding-1);
+    }
+
+    pre + .aigis-preview {
+      margin-top: var(--_margin2);
+    }
+  }
+
+  & + .c-entry {
+    margin-top: var(--_margin2);
+  }
+}

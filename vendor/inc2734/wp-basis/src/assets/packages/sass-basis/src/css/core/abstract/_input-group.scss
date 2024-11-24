@@ -1,0 +1,112 @@
+@use "../mixin";
+@use "./form-control" as *;
+@use "./btn" as *;
+
+/*
+---
+name: input-group()
+category:
+  - core/abstract
+  - core/abstract/form
+---
+Abstract input group component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-input-group {
+  @include core.input-group();
+}
+```
+
+### html
+```ejs
+<div class="c-input-group">
+  <div class="c-input-group__addon">@</div>
+  <div class="c-input-group__field">
+    <input type="text">
+  </div>
+  <button class="c-input-group__btn">Go</button>
+</div>
+```
+*/
+
+@mixin input-group() {
+  --_border-radius: var(--_global--border-radius);
+
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: var(--_border-radius);
+
+  > :first-child {
+    position: relative;
+    border-radius: var(--_border-radius) 0 0 var(--_border-radius);
+    border-right: none;
+  }
+
+  > :nth-last-child(2) {
+    position: relative;
+    z-index: 1;
+  }
+
+  > :last-child {
+    position: relative;
+    z-index: 0;
+    left: -1px;
+    border-radius: 0 var(--_border-radius) var(--_border-radius) 0;
+
+    &:hover, &:active, &:focus {
+      z-index: 1;
+    }
+  }
+
+  &__addon {
+    background-color: var(--_color-white);
+    border: 1px solid var(--_form-control-border-color);
+    @include mixin.form-control-base-padding();
+    flex: none;
+  }
+
+  &__field {
+    display: flex;
+    flex: 1;
+
+    > input {
+      appearance: none;
+      flex: 1 1 0%;
+      width: 100%;
+      @include form-control();
+    }
+
+    &:first-child:not(:last-child) {
+      > input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+
+    &:last-child:not(:first-child) {
+      > input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+
+    &:not(:first-child):not(:last-child) {
+      > input {
+        border-radius: 0;
+      }
+    }
+  }
+
+  &__btn {
+    @include btn();
+    background-color: var(--_color-white);
+    color: currentColor;
+    flex: none;
+    overflow: visible;
+    @include mixin.form-control-base-padding();
+    @include mixin.form-control-base-border();
+  }
+}

@@ -1,0 +1,198 @@
+@use "../mixin";
+
+/*
+---
+name: navbar()
+category:
+  - core/abstract
+---
+Abstract navbar component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-navbar {
+  @include core.navbar();
+
+  &__item > a {
+    color: inherit;
+    padding: var(--_padding-1) var(--_padding1);
+  }
+}
+```
+
+### js
+```js
+import BasisNavbar from 'node_modules/sass-basis/src/js/_navbar.js';
+new BasisNavbar({
+  wrapper: '.c-navbar',
+});
+```
+
+### html
+```ejs
+<ul class="c-navbar">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+``````html
+<ul class="c-navbar" data-popup-mode="click">
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <button class="c-navbar__toggle" aria-expanded="false">
+      <span class="c-ic-angle-right" aria-hidden="true"></span>
+    </button>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <button class="c-navbar__toggle" aria-expanded="false">
+          <span class="c-ic-angle-right" aria-hidden="true"></span>
+        </button>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <button class="c-navbar__toggle" aria-expanded="false">
+          <span class="c-ic-angle-right" aria-hidden="true"></span>
+        </button>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item" aria-haspopup="true">
+    <a href="#">menu</a>
+    <button class="c-navbar__toggle" aria-expanded="false">
+      <span class="c-ic-angle-right" aria-hidden="true"></span>
+    </button>
+    <ul class="c-navbar__submenu" aria-hidden="true">
+      <li class="c-navbar__subitem" aria-haspopup="true">
+        <a href="#">submenu</a>
+        <button class="c-navbar__toggle" aria-expanded="false">
+          <span class="c-ic-angle-right" aria-hidden="true"></span>
+        </button>
+        <ul class="c-navbar__submenu" aria-hidden="true">
+          <li class="c-navbar__subitem"><a href="#">submenu</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li class="c-navbar__item">
+    <a href="#">menu</a>
+  </li>
+</ul>
+```
+*/
+
+@mixin navbar() {
+  @include mixin.list-unstyled();
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  $root: #{&};
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+
+    > a {
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    > #{$root}__submenu {
+      position: absolute;
+      top: 100%;
+      right: auto;
+      left: auto;
+
+      &--turn-left {
+        #{$root}__submenu {
+          right: 100%;
+          left: auto;
+        }
+      }
+    }
+  }
+
+  &__subitem {
+    position: relative;
+
+    > a {
+      display: block;
+      text-decoration: none;
+    }
+
+    > #{$root}__submenu {
+      position: absolute;
+      top: 0;
+      right: auto;
+      left: 100%;
+    }
+  }
+
+  &__submenu {
+    @include mixin.list-unstyled();
+    min-width: 240px;
+    opacity: 0;
+    visibility: hidden;
+    @include mixin.transition(opacity);
+
+    &[aria-hidden="false"] {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__toggle {
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    vertical-align: middle;
+  }
+}

@@ -1,0 +1,182 @@
+@use "sass:map";
+
+/*
+---
+name: dropdown()
+category:
+  - core/abstract
+---
+Abstract dropdown component
+
+### scss
+```scss
+@use "node_modules/sass-basis/src/css/core";
+
+.c-dropdown {
+  @include core.dropdown();
+
+  &__menu,
+  &__submenu {
+    @include core.list-unstyled();
+
+    > *:not(:first-child) {
+      margin-top: var(--_margin-1);
+    }
+  }
+
+  &__item,
+  &__subitem {
+    position: relative;
+    overflow: hidden;
+
+    &--has-submenu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      > * {
+        flex: 1 1 auto;
+      }
+
+      > a {
+        padding-right: var(--_padding-1);
+        max-width: calc(100% - 42px);
+      }
+
+      > .c-dropdown__toggle {
+        flex: 0 0 auto;
+        width: 42px;
+        overflow: hidden;
+      }
+
+      > .c-dropdown__submenu {
+        flex: 1 1 100%;
+      }
+    }
+  }
+
+  &__submenu {
+    margin-top: var(--_margin-1);
+    margin-left: var(--_margin-1);
+
+    &[aria-hidden="true"] {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+```
+
+### js
+```js
+import BasisDrawer from 'node_modules/sass-basis/src/js/_drawer.js';
+new BasisDrawer({
+  drawer : '.c-dropdown',
+});
+```
+
+### html
+```ejs
+<div style="min-height: 200px; position: relative">
+  <nav id="my-dropdown" class="c-dropdown" role="navigation" aria-hidden="true" aria-labelledby="my-dropdown-btn">
+    <div class="c-dropdown__inner">
+      <ul class="c-dropdown__menu">
+        <li class="c-dropdown__item">
+          <div class="c-hamburger-btn" role="button" aria-expanded="false" aria-controls="my-dropdown">
+            <div class="c-hamburger-btn__bars">
+              <div class="c-hamburger-btn__bar"></div>
+              <div class="c-hamburger-btn__bar"></div>
+              <div class="c-hamburger-btn__bar"></div>
+            </div>
+            <div class="c-hamburger-btn__label">MENU</div>
+          </div>
+        </li>
+        <li class="c-dropdown__item"><a href="#">menu</a></li>
+        <li class="c-dropdown__item"><a href="#">menu</a></li>
+        <li class="c-dropdown__item">
+          <a href="#">menu</a>
+          <button class="c-dropdown__toggle" aria-expanded="false">
+            <span class="c-ic-angle-right" aria-hidden="true"></span>
+          </button>
+          <ul class="c-dropdown__submenu" aria-hidden="true">
+            <li class="c-dropdown__subitem"><a href="#">submenu</a></li>
+            <li class="c-dropdown__subitem"><a href="#">submenu</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<button id="my-dropdown-btn" class="c-hamburger-btn" aria-expanded="false" aria-controls="my-dropdown">
+  <span class="c-hamburger-btn__bars">
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+    <span class="c-hamburger-btn__bar"></span>
+  </span>
+  <span class="c-hamburger-btn__label">MENU</span>
+</button>
+```
+*/
+
+@mixin dropdown($params: ()) {
+  $params: map.merge(
+    (
+    ),
+    $params
+  );
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 100%;
+  left: 0;
+  z-index: 10;
+  visibility: hidden;
+
+  &[aria-hidden="false"] {
+    visibility: visible;
+    bottom: 0;
+  }
+
+  &__inner {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &__submenu {
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+
+    &[aria-hidden="false"] {
+      height: auto;
+      overflow: visible;
+      visibility: visible;
+    }
+  }
+
+  &__item,
+  &__subitem {
+    > a {
+      display: block;
+      text-decoration: none;
+    }
+  }
+
+  &__toggle {
+    cursor: pointer;
+    appearance: none;
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+    vertical-align: middle;
+  }
+}

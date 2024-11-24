@@ -1,0 +1,10 @@
+@use "../../../../../css/core";
+
+.l-footer .c-copyright {
+  @include core.set-font-size-level(-1);
+  padding: var(--_padding1) 0 var(--_padding2);
+
+  a {
+    color: var(--_color-gray);
+  }
+}

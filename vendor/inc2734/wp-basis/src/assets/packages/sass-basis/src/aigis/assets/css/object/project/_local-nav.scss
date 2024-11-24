@@ -1,0 +1,32 @@
+@use "../../../../../css/core";
+
+.p-local-nav {
+  ul {
+    @include core.list-unstyled();
+  }
+
+  li {
+    li {
+      padding: 0 0 0 var(--_padding-1);
+
+      li {
+        display: none;
+      }
+    }
+  }
+
+  a[href] {
+    color: var(--_light-color-text);
+    text-decoration: none;
+
+    @include core.hover() {
+      text-decoration: underline;;
+    }
+  }
+
+  a:not([href]) {
+    color: var(--_lightest-color-text);
+    cursor: text;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,105 @@
+@use "../../core/abstract";
+
+/*
+---
+name: .c-top-balloon
+category:
+  - object/component
+  - object/component/balloon
+  - object/component/balloon/top-balloon
+---
+Top balloon component
+
+### html
+```html
+<div class="c-top-balloon">
+  ...
+</div>
+```
+*/
+
+.c-top-balloon {
+  @include abstract.top-balloon((
+    background-color: var(--_color-white),
+    border-color: var(--_light-color-gray),
+    border-size: 1px,
+  ));
+}
+
+/*
+---
+name: .c-right-balloon
+category:
+  - object/component
+  - object/component/balloon
+  - object/component/balloon/right-balloon
+---
+Right balloon component
+
+### html
+```html
+<div class="c-right-balloon">
+  ...
+</div>
+```
+*/
+
+.c-right-balloon {
+  @include abstract.right-balloon((
+    background-color: var(--_color-white),
+    border-color: var(--_light-color-gray),
+    border-size: 1px,
+  ));
+}
+
+/*
+---
+name: .c-bottom-balloon
+category:
+  - object/component
+  - object/component/balloon
+  - object/component/balloon/bottom-balloon
+---
+Bottom balloon component
+
+### html
+```html
+<div class="c-bottom-balloon">
+  ...
+</div>
+```
+*/
+
+.c-bottom-balloon {
+  @include abstract.bottom-balloon((
+    background-color: var(--_color-white),
+    border-color: var(--_light-color-gray),
+    border-size: 1px,
+  ));
+}
+
+/*
+---
+name: .c-left-balloon
+category:
+  - object/component
+  - object/component/balloon
+  - object/component/balloon/left-balloon
+---
+Left balloon component
+
+### html
+```html
+<div class="c-left-balloon">
+  ...
+</div>
+```
+*/
+
+.c-left-balloon {
+  @include abstract.left-balloon((
+    background-color: var(--_color-white),
+    border-color: var(--_light-color-gray),
+    border-size: 1px,
+  ));
+}

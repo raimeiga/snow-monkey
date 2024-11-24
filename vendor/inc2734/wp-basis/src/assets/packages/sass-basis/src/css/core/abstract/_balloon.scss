@@ -1,0 +1,178 @@
+@use "../function";
+@use "../mixin";
+
+/*
+---
+name: top-balloon()
+category:
+  - core/abstract
+  - core/abstract/balloon
+---
+Abstract top balloon component
+
+### scss
+```scss
+//
+// @param  hash  $params
+//   background-color  hex
+//   border-color      hex
+//   border-size       length
+//   triangle-size     length
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-top-balloon {
+  @include core.top-balloon((
+    background-color: #fff,
+    border-color: null,
+    border-size: null,
+    triangle-size: 10px,
+  ));
+  padding: var(--_padding1);
+}
+```
+
+### html
+```ejs
+<div class="c-top-balloon">
+  ...
+</div>
+```
+*/
+
+@mixin top-balloon($params: ()) {
+  @include mixin.balloon(top, $params);
+}
+
+/*
+---
+name: right-balloon()
+category:
+  - core/abstract
+  - core/abstract/balloon
+---
+Abstract right balloon component
+
+### scss
+```scss
+//
+// @param  hash  $params
+//   background-color  hex
+//   border-color      hex
+//   border-size       length
+//   triangle-size     length
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-right-balloon {
+  @include core.right-balloon((
+    background-color: #fff,
+    border-color: null,
+    border-size: null,
+    triangle-size: 10px,
+  ));
+  padding: var(--_padding1);
+}
+```
+
+### html
+```ejs
+<div class="c-right-balloon">
+  ...
+</div>
+```
+*/
+
+@mixin right-balloon($params: ()) {
+  @include mixin.balloon(right, $params);
+}
+
+/*
+---
+name: bottom-balloon()
+category:
+  - core/abstract
+  - core/abstract/balloon
+---
+Abstract bottom balloon component
+
+### scss
+```scss
+//
+// @param  hash  $params
+//   background-color  hex
+//   border-color      hex
+//   border-size       length
+//   triangle-size     length
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-bottom-balloon {
+  @include core.bottom-balloon((
+    background-color: #fff,
+    border-color: null,
+    border-size: null,
+    triangle-size: 10px,
+  ));
+  padding: var(--_padding1);
+}
+```
+
+### html
+```ejs
+<div class="c-bottom-balloon">
+  ...
+</div>
+```
+*/
+
+@mixin bottom-balloon($params: ()) {
+  @include mixin.balloon(bottom, $params);
+}
+
+/*
+---
+name: left-balloon()
+category:
+  - core/abstract
+  - core/abstract/balloon
+---
+Abstract left balloon component
+
+### scss
+```scss
+//
+// @param  hash  $params
+//   background-color  hex
+//   border-color      hex
+//   border-size       length
+//   triangle-size     length
+//
+
+@use "node_modules/sass-basis/src/css/core";
+
+.c-left-balloon {
+  @include core.left-balloon((
+    background-color: #fff,
+    border-color: null,
+    border-size: null,
+    triangle-size: 10px,
+  ));
+  padding: var(--_padding1);
+}
+```
+
+### html
+```ejs
+<div class="c-left-balloon">
+  ...
+</div>
+```
+*/
+
+@mixin left-balloon($params: ()) {
+  @include mixin.balloon(left, $params);
+}

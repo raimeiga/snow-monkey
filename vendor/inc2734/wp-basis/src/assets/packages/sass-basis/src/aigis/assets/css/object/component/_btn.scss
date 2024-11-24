@@ -1,0 +1,36 @@
+@use "../../../../../css/core";
+
+.c-btn {
+  --_border-radius: var(--_global--border-radius);
+
+  @include core.transition(all);
+  border: none;
+  border-radius: var(--_border-radius);
+  padding: var(--_padding-2) var(--_padding-1);
+
+  &--block {
+    display: block;
+  }
+
+  &--ghost {
+    border: 1px solid var(--_color-white);;
+    background-color: transparent;
+  }
+
+  &--launch, &--download, &--buy {
+    background-color: var(--color-primary);
+    color: var(--_color-white);
+
+    @include core.hover() {
+      opacity: .8;
+    }
+
+    .fa {
+      margin-right: 8px;
+    }
+  }
+
+  &--buy {
+    background-color: #e1c600;
+  }
+}
